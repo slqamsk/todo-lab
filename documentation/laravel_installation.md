@@ -16,26 +16,24 @@
 
 ### Шаг 1. Узнайте путь к PHP 8.3
 
-Выполните в терминале:
-
+Выполните в терминале:  
 which php83
 
 Пример результата: `/usr/local/bin/php83`
 
 ### Шаг 2. Установите Composer (если ещё не установлен)
 
-php83 -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-php83 composer-setup.php --quiet
-rm composer-setup.php
-mkdir -p ~/bin
-mv composer.phar ~/bin/composer
-  
+php83 -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"  
+php83 composer-setup.php --quiet  
+rm composer-setup.php  
+mkdir -p ~/bin  
+mv composer.phar ~/bin/composer  
 
 ### Шаг 3. Создайте команду `composer83`, привязанную к PHP 8.3
 
-echo '#!/bin/bash
-exec /usr/local/bin/php83 /home/a1109685/bin/composer "$@"' > ~/bin/composer83
-chmod +x ~/bin/composer83
+echo '#!/bin/bash  
+exec /usr/local/bin/php83 /home/a1109685/bin/composer "$@"' > ~/bin/composer83  
+chmod +x ~/bin/composer83  
   
 
 ### Шаг 4. Перейдите в папку домена
@@ -53,11 +51,9 @@ composer83 create-project laravel/laravel:^11.0 my-laravel-app
 Ожидайте 1–3 минуты. Папка `my-laravel-app` будет создана рядом с `public_html`.
 
 ### Шаг 7. Создайте тестовую папку в `public_html`
-
 mkdir public\_html/laravel-test
 
 ### Шаг 8. Скопируйте публичные файлы Laravel в тестовую папку
-
 cp -r my-laravel-app/public/\* public\_html/laravel-test/
 cp -r my-laravel-app/public/.\* public\_html/laravel-test/ 2>/dev/null || true
   
